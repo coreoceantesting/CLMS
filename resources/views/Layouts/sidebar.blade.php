@@ -107,7 +107,7 @@
             </ul>
         </li>
 
-        <li class="menu-header small text-uppercase">
+        {{-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
         </li>
         <li class="menu-item">
@@ -173,14 +173,14 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
         <!-- Components -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Menus</span></li>
         <!-- Cards -->
         <li class="menu-item">
             <a href="cards-basic.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Cards</div>
+                <div data-i18n="Basic">Patient Registration</div>
             </a>
         </li>
         <!-- User interface -->
