@@ -178,12 +178,12 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Menus</span></li>
         <!-- Cards -->
         <li class="menu-item">
-            <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
+            <a href="{{route('register_patient')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-pin"></i>
                 <div data-i18n="Basic">Patient Registration</div>
             </a>
         </li>
-        <!-- User interface -->
+        {{-- <!-- User interface -->
         <li class="menu-item">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-box"></i>
@@ -313,7 +313,7 @@
                 <i class="menu-icon tf-icons bx bx-crown"></i>
                 <div data-i18n="Boxicons">Boxicons</div>
             </a>
-        </li>
+        </li> --}}
 
         <!-- Forms & Tables -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>

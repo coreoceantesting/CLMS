@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\MastesController;
+use App\Http\Controllers\PatientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,7 @@ Route::post('/store-lab', [MastesController::class, 'store_lab'])->name('store_l
 Route::get('/edit-lab/{id}/edit', [MastesController::class, 'edit_lab'])->name('edit_lab');
 Route::patch('/update-lab/{id}', [MastesController::class, 'update_lab'])->name('update_lab');
 Route::put('/delete-lab/{id}', [MastesController::class, 'delete_lab'])->name('delete_lab');
+
+// patient Registration
+Route::get('/register-patient', [PatientController::class, 'register_patient'])->name('register_patient');
+Route::post('/store-patient', [PatientController::class, 'store_patient'])->name('store_patient');

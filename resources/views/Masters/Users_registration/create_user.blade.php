@@ -70,7 +70,7 @@
                             />
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <label for="user_type" class="form-label">USer Types</label>
+                        <label for="user_type" class="form-label">User Types</label>
                         <select class="form-select" id="user_type" name="user_type" aria-label="Default select example" required>
                             <option selected>Select User Types</option>
                             <option value="Superadmin">Superadmin</option>

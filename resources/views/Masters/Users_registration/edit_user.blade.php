@@ -75,7 +75,7 @@
                             />
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <label for="user_type" class="form-label">USer Types</label>
+                        <label for="user_type" class="form-label">User Types</label>
                         <select class="form-select" id="user_type" name="user_type" aria-label="Default select example" required>
                             <option value="">Select User Types</option>
                             <option @if($user_detail->usertype == 'Superadmin') selected @endif value="Superadmin">Superadmin</option>

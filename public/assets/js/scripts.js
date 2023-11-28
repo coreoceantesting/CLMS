@@ -11,7 +11,3 @@ function deleteUser(userId)
         ]
     } );
 } );
-
-$(document).ready(function() {
-    $('#labTable').DataTable();
-});

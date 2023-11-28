@@ -58,7 +58,7 @@
         @yield('content')
 
     </div>
-    @include('Layouts.footer')
+    {{-- @include('Layouts.footer') --}}
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
