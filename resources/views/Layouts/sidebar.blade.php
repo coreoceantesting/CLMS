@@ -47,7 +47,7 @@
                     </g>
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">CMLS</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -186,7 +186,13 @@
         <li class="menu-item {{ request()->routeIs('patient_pending_list') ? 'active' : '' }}">
             <a href="{{route('patient_pending_list')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-window-open"></i>
-                <div data-i18n="Basic">Pending Samples</div>
+                <div data-i18n="Basic">Pending List</div>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->routeIs('patient_completed_list') ? 'active' : '' }}">
+            <a href="{{route('patient_completed_list')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-check-square"></i>
+                <div data-i18n="Basic">Completed List</div>
             </a>
         </li>
         {{-- <!-- User interface -->
@@ -322,9 +328,9 @@
         </li> --}}
 
         <!-- Forms & Tables -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
+        <li class="menu-header small text-uppercase" style="display: none"><span class="menu-header-text">Forms &amp; Tables</span></li>
         <!-- Forms -->
-        <li class="menu-item">
+        <li class="menu-item" style="display: none">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Form Elements">Form Elements</div>
@@ -342,7 +348,7 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-item">
+        <li class="menu-item" style="display: none">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Form Layouts">Form Layouts</div>
@@ -361,22 +367,22 @@
             </ul>
         </li>
         <!-- Tables -->
-        <li class="menu-item">
+        <li class="menu-item" style="display: none">
             <a href="tables-basic.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-table"></i>
                 <div data-i18n="Tables">Tables</div>
             </a>
         </li>
         <!-- Misc -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
-        <li class="menu-item">
+        <li class="menu-header small text-uppercase" style="display: none"><span class="menu-header-text">Misc</span></li>
+        <li class="menu-item" style="display: none">
             <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
                 class="menu-link">
                 <i class="menu-icon tf-icons bx bx-support"></i>
                 <div data-i18n="Support">Support</div>
             </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item" style="display: none">
             <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
                 target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>

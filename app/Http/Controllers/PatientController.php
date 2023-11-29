@@ -95,7 +95,12 @@ class PatientController extends Controller
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
-        // Redirect or do something else
         return redirect()->route('patient_pending_list')->with('success', 'Test results have been stored successfully!');
+    }
+
+    public function patient_completed_list()
+    {
+        $patient_list = DB::table('patient_details')->where('status','completed')->orderby('id','desc')->get();
+        return view('Admin.completed_list', compact('patient_list'));
     }
 }

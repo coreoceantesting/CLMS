@@ -36,7 +36,7 @@
 
             <ul class="navbar-nav flex-row align-items-center ms-auto">
               <!-- Place this tag where you want the button to render. -->
-              <li class="nav-item lh-1 me-3">
+              <li class="nav-item lh-1 me-3" style="display: none">
                 <a
                   class="github-button"
                   href="https://github.com/themeselection/sneat-html-admin-template-free"
@@ -72,21 +72,21 @@
                     </a>
                   </li>
                   <li>
-                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider" style="display: none"></div>
                   </li>
-                  <li>
+                  <li style="display: none">
                     <a class="dropdown-item" href="#">
                       <i class="bx bx-user me-2"></i>
                       <span class="align-middle">My Profile</span>
                     </a>
                   </li>
-                  <li>
+                  <li style="display: none">
                     <a class="dropdown-item" href="#">
                       <i class="bx bx-cog me-2"></i>
                       <span class="align-middle">Settings</span>
                     </a>
                   </li>
-                  <li>
+                  <li style="display: none">
                     <a class="dropdown-item" href="#">
                       <span class="d-flex align-items-center align-middle">
                         <i class="flex-shrink-0 bx bx-credit-card me-2"></i>

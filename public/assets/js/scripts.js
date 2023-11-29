@@ -4,7 +4,7 @@ function deleteUser(userId)
 }
 
    $(document).ready(function() {
-    $('#emptable').DataTable( {
+    $('#completed_list,#pending_list').DataTable( {
         dom: 'Bfrtip',
         buttons: [
              'excel', 'pdf', 'print'

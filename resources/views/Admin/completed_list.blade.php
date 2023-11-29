@@ -15,7 +15,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table id="pending_list" class="display dataTable">
+                <table id="completed_list" class="display dataTable">
                     <thead>
                         <tr>
                             <th>Patient Name</th>
@@ -30,7 +30,7 @@
                             <td>{{$list->patient_name}}</td>
                             <td>{{$list->patient_mobile_no}}</td>
                             <td>{{$list->refering_doctor_name}}</td>
-                            <td><a href="{{route('edit_report',$list->id )}}" class="btn btn-sm btn-primary text-white">Create report</a></td>
+                            <td><a class="btn btn-sm btn-primary text-white">View Report</a></td>
                         </tr>
                         @endforeach
                     </tbody>

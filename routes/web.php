@@ -59,3 +59,5 @@ Route::post('/store-patient', [PatientController::class, 'store_patient'])->name
 Route::get('/patient-pending-list', [PatientController::class, 'patient_pending_list'])->name('patient_pending_list');
 Route::get('/edit-report/{id}/edit', [PatientController::class, 'edit_report'])->name('edit_report');
 Route::post('/store-results/{id}', [PatientController::class, 'storeResults'])->name('store_results');
+// completed samples
+Route::get('/patient-completed-list', [PatientController::class, 'patient_completed_list'])->name('patient_completed_list');
