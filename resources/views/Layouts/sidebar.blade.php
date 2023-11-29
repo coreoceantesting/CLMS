@@ -59,7 +59,7 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
             <a href="{{route('dashboard')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -67,24 +67,24 @@
         </li>
 
         <!-- Layouts -->
-        <li class="menu-item">
+        <li class="menu-item {{ request()->routeIs(['user_list', 'test_category_list', 'lab_list']) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layout">Masters</div>
             </a>
 
-            <ul class="menu-sub">
-                <li class="menu-item">
+            <ul class="menu-sub" style="{{ request()->routeIs(['user_list', 'test_category_list', 'lab_list']) ? 'display: block;' : '' }}">
+                <li class="menu-item {{ request()->routeIs('user_list') ? 'active' : '' }}">
                     <a href="{{route('user_list')}}" class="menu-link">
                         <div data-i18n="Without menu">User Registration</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ request()->routeIs('test_category_list') ? 'active' : '' }}">
                     <a href="{{route('test_category_list')}}" class="menu-link">
                         <div data-i18n="Without navbar">Test Category</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ request()->routeIs('lab_list') ? 'active' : '' }}">
                     <a href="{{route('lab_list')}}" class="menu-link">
                         <div data-i18n="Without navbar">Lab</div>
                     </a>
@@ -177,10 +177,16 @@
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Menus</span></li>
         <!-- Cards -->
-        <li class="menu-item">
+        <li class="menu-item {{ request()->routeIs('register_patient') ? 'active' : '' }}">
             <a href="{{route('register_patient')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-pin"></i>
                 <div data-i18n="Basic">Patient Registration</div>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->routeIs('patient_pending_list') ? 'active' : '' }}">
+            <a href="{{route('patient_pending_list')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-window-open"></i>
+                <div data-i18n="Basic">Pending Samples</div>
             </a>
         </li>
         {{-- <!-- User interface -->

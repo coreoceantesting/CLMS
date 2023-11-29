@@ -55,3 +55,7 @@ Route::put('/delete-lab/{id}', [MastesController::class, 'delete_lab'])->name('d
 // patient Registration
 Route::get('/register-patient', [PatientController::class, 'register_patient'])->name('register_patient');
 Route::post('/store-patient', [PatientController::class, 'store_patient'])->name('store_patient');
+// pending samples
+Route::get('/patient-pending-list', [PatientController::class, 'patient_pending_list'])->name('patient_pending_list');
+Route::get('/edit-report/{id}/edit', [PatientController::class, 'edit_report'])->name('edit_report');
+Route::post('/store-results/{id}', [PatientController::class, 'storeResults'])->name('store_results');

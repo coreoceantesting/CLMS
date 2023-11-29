@@ -4,10 +4,16 @@ function deleteUser(userId)
 }
 
    $(document).ready(function() {
-    $('#example').DataTable( {
+    $('#emptable').DataTable( {
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
+             'excel', 'pdf', 'print'
+        ],
+        order: [[3, 'desc']]
     } );
+
+    $('#test').multipleSelect({
+        filter: true,
+        placeholder: 'Select Test'
+      })
 } );

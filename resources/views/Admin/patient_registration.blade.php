@@ -105,10 +105,13 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <label for="test" class="form-label">Select Test</label>
-                        <select class="form-select @error('test') is-invalid @enderror" id="test" name="test" aria-label="Default select example" required>
-                            <option selected>Select test</option>
-                            <option value="1">Test 1</option>
-                            <option value="2">Test 2</option>
+                        <select class="multiple-select @error('test') is-invalid @enderror" id="test" name="test[]" aria-label="Default select example" required multiple>
+                            {{-- <option selected>Select test</option> --}}
+                            @foreach($test_list as $list)
+                            {
+                                <option value="{{$list->test_category_id}}">{{$list->test_category_name}}</option>
+                            }
+                            @endforeach
                         </select>
                         @error('test')
                             <div class="invalid-feedback">{{ $message }}</div>
