@@ -51,19 +51,8 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
-    <style>
-        .ms-parent {
-            display: flex!important;
-            position: relative;
-            vertical-align: middle;
-            width: 100%!important;
-        }
-
-        .ms-choice>span.placeholder {
-            color: #999;
-            display: contents!important;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    
 </head>
 @stack('styles')
 

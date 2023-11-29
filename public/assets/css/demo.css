@@ -105,3 +105,125 @@
   text-align: center;
   margin-top: 1rem;
 }
+
+/* ==============================================My Custom Css============================================ */
+.ms-parent {
+  display: flex!important;
+  position: relative;
+  vertical-align: middle;
+  width: 100%!important;
+}
+
+.ms-choice>span.placeholder {
+  color: #999;
+  display: contents!important;
+}
+
+.ms-choice{
+  height: 40px!important;
+  padding-left: 10px!important;
+}
+
+/* Float four columns side by side */
+.column {
+float: left;
+width: 25%;
+padding: 0 5px;
+}
+
+.dashboard {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.dashboard:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+.column {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+}
+
+/* Style the counter cards */
+.cardnew {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+padding: 16px;
+text-align: center;
+background-color: white;
+color: white;
+border-radius: 15px;
+border: 1px solid lavender;
+background: #696cff;
+}
+
+.fa {font-size:50px;}
+
+/* new dashboard cards */
+.c-dashboardInfo {
+margin-bottom: 15px;
+}
+.c-dashboardInfo .wrap {
+background: #ffffff;
+box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.1);
+border-radius: 7px;
+text-align: center;
+position: relative;
+overflow: hidden;
+padding: 40px 25px 20px;
+height: 100%;
+}
+.c-dashboardInfo__title,
+.c-dashboardInfo__subInfo {
+color: #6c6c6c;
+font-size: 1.18em;
+}
+.c-dashboardInfo span {
+display: block;
+}
+.c-dashboardInfo__count {
+font-weight: 600;
+font-size: 2.5em;
+line-height: 64px;
+color: #323c43;
+}
+.c-dashboardInfo .wrap:after {
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 10px;
+content: "";
+}
+
+.c-dashboardInfo:nth-child(1) .wrap:after {
+background: linear-gradient(82.59deg, #00c48c 0%, #00a173 100%);
+}
+.c-dashboardInfo:nth-child(2) .wrap:after {
+background: linear-gradient(81.67deg, #0084f4 0%, #1a4da2 100%);
+}
+.c-dashboardInfo:nth-child(3) .wrap:after {
+background: linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%);
+}
+.c-dashboardInfo:nth-child(4) .wrap:after {
+background: linear-gradient(81.67deg, #ff647c 0%, #1f5dc5 100%);
+}
+.c-dashboardInfo__title svg {
+color: #d7d7d7;
+margin-left: 5px;
+}
+.MuiSvgIcon-root-19 {
+fill: currentColor;
+width: 1em;
+height: 1em;
+display: inline-block;
+font-size: 24px;
+transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+user-select: none;
+flex-shrink: 0;
+}

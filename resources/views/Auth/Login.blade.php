@@ -128,7 +128,7 @@
                     </div>
                 </form>
 
-                <p class="text-center">
+                <p class="text-center" style="display: none">
                     <span>New on our platform?</span>
                     <a href="{{route('register')}}">
                         <span>Create an account</span>
