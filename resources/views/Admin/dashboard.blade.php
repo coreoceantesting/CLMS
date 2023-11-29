@@ -516,7 +516,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
     <!-- / Content -->
 @endsection
