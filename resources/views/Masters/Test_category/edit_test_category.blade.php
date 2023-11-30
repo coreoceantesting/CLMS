@@ -51,6 +51,18 @@
                               required
                             />
                     </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label for="maincategory" class="form-label">Main Category</label>
+                        <select class="form-select @error('maincategory') is-invalid @enderror" id="maincategory" name="maincategory" aria-label="Default select example" required>
+                            <option selected>Select Main Category</option>
+                            @foreach($main_category_list as $list)
+                                <option @if($test_category_details->main_test_categories_id == $list->main_test_categories_id) selected @endif value="{{$list->main_test_categories_id}}">{{$list->main_test_categories_name}}</option>
+                            @endforeach
+                        </select>
+                        @error('maincategory')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div class="col-md-6 col-sm-12 py-4">
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </div>

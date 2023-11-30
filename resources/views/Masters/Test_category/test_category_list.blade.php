@@ -17,6 +17,7 @@
               <thead>
                 <tr>
                   <th>Name</th>
+                  <th>Main Category Name</th>
                   <th>Units</th>
                   <th>BIO.REF Interval</th>
                   <th>Actions</th>
@@ -27,6 +28,7 @@
                     @foreach ($test_list as $item)
                     <tr>
                         <td>{{$item->test_category_name}}</td>
+                        <td>{{$item->main_test_categories_name}}</td>
                         <td>{{$item->test_category_units}}</td>
                         <td>{{$item->bio_referal_interval}}</td>
                         <td>

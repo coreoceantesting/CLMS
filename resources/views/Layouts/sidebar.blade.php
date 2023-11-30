@@ -73,17 +73,22 @@
                 <div data-i18n="Layout">Masters</div>
             </a>
 
-            <ul class="menu-sub" style="{{ request()->routeIs(['user_list', 'test_category_list', 'lab_list']) ? 'display: block;' : '' }}">
+            <ul class="menu-sub" style="{{ request()->routeIs(['user_list', 'test_category_list', 'lab_list','main_test_category_list']) ? 'display: block;' : '' }}">
                 <li class="menu-item {{ request()->routeIs('user_list') ? 'active' : '' }}">
                     <a href="{{route('user_list')}}" class="menu-link">
                         <div data-i18n="Without menu">User Registration</div>
                     </a>
                 </li>
-                <li class="menu-item {{ request()->routeIs('test_category_list') ? 'active' : '' }}">
-                    <a href="{{route('test_category_list')}}" class="menu-link">
-                        <div data-i18n="Without navbar">Test Category</div>
+                <li class="menu-item {{ request()->routeIs('main_test_category_list') ? 'active' : '' }}">
+                    <a href="{{route('main_test_category_list')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Main Test Category</div>
                     </a>
                 </li>
+                <li class="menu-item {{ request()->routeIs('test_category_list') ? 'active' : '' }}">
+                    <a href="{{route('test_category_list')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Sub Test Category</div>
+                    </a>
+                </li>                
                 <li class="menu-item {{ request()->routeIs('lab_list') ? 'active' : '' }}">
                     <a href="{{route('lab_list')}}" class="menu-link">
                         <div data-i18n="Without navbar">Lab</div>

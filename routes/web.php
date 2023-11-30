@@ -52,6 +52,14 @@ Route::get('/edit-lab/{id}/edit', [MastesController::class, 'edit_lab'])->name('
 Route::patch('/update-lab/{id}', [MastesController::class, 'update_lab'])->name('update_lab');
 Route::put('/delete-lab/{id}', [MastesController::class, 'delete_lab'])->name('delete_lab');
 
+// Main test category
+Route::get('/main-test-category-list', [MastesController::class, 'main_test_category_list'])->name('main_test_category_list');
+Route::get('/create-main-test-category',[MastesController::class, 'create_main_test_category'])->name('create_main_test_category');
+Route::post('/store-main-test-category', [MastesController::class, 'store_main_test_category'])->name('store_main_test_category'); 
+Route::get('/edit-main-test-category/{id}/edit', [MastesController::class, 'edit_main_test_category'])->name('edit_main_test_category');
+Route::patch('/update-main-test-category/{id}', [MastesController::class, 'update_main_test_category'])->name('update_main_test_category');
+Route::put('/delete-main-test-category/{id}', [MastesController::class, 'delete_main_test_category'])->name('delete_main_test_category');
+
 // patient Registration
 Route::get('/register-patient', [PatientController::class, 'register_patient'])->name('register_patient');
 Route::post('/store-patient', [PatientController::class, 'store_patient'])->name('store_patient');

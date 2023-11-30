@@ -3,6 +3,11 @@ function deleteUser(userId)
     document.getElementById('deleteForm' + userId).submit();
 }
 
+function deleteCategory(userId) 
+{
+    document.getElementById('deletecat' + userId).submit();
+}
+
    $(document).ready(function() {
     $('#completed_list,#pending_list').DataTable( {
         dom: 'Bfrtip',
