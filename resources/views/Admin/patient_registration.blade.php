@@ -107,10 +107,14 @@
                         <label for="test" class="form-label">Select Test</label>
                         <select class="multiple-select @error('test') is-invalid @enderror" id="test" name="test[]" aria-label="Default select example" required multiple>
                             {{-- <option selected>Select test</option> --}}
-                            @foreach($test_list as $list)
-                            {
-                                <option value="{{$list->test_category_id}}">{{$list->test_category_name}}</option>
-                            }
+                            @foreach($mainCategories as $mainCategory)
+                                <optgroup label="{{ $mainCategory->main_test_categories_name }}">
+                                    @foreach($subCategories as $subCategory)
+                                        @if($subCategory->main_test_categories_id === $mainCategory->main_test_categories_id)
+                                            <option value="{{ $subCategory->test_category_id }}">{{ $subCategory->test_category_name }}</option>
+                                        @endif
+                                    @endforeach
+                                </optgroup>
                             @endforeach
                         </select>
                         @error('test')

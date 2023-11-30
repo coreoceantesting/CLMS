@@ -12,8 +12,22 @@ class PatientController extends Controller
 {
    public function register_patient()
    {
-        $test_list = DB::table('test_category')->where('is_deleted','0')->get();
-        return view('Admin.patient_registration',compact('test_list'));
+        // $test_list = DB::table('test_category')->where('is_deleted','0')->get();
+        // $categories =  DB::table('test_category as main')
+        //     ->select('main.test_category_id as main_id', 'main.test_category_name as main_name', 'sub.main_test_categories_id as sub_id', 'sub.main_test_categories_name as sub_name')
+        //     ->leftJoin('main_test_categories as sub', 'main.main_test_categories_id', '=', 'sub.main_test_categories_id')
+        //     ->where('main.is_deleted','0')
+        //     ->get();
+
+        $mainCategories = DB::table('main_test_categories')->where('is_deleted','0')->get();
+
+        // Fetch subcategories with their main category names
+        $subCategories = DB::table('test_category')
+            ->join('main_test_categories', 'test_category.main_test_categories_id', '=', 'main_test_categories.main_test_categories_id')
+            ->select('test_category.*', 'main_test_categories.main_test_categories_name')
+            ->where('test_category.is_deleted','0')
+            ->get();
+        return view('Admin.patient_registration',compact('mainCategories','subCategories'));
    }
 
    public function store_patient(Request $request): RedirectResponse
@@ -25,13 +39,13 @@ class PatientController extends Controller
             'age' => 'required',
             'gender' => 'required',
             'address' => 'required',
-            'test' => 'required',
+            'test' => 'required|array',
             'lab' => 'required',
             'doctor' => 'required',
             'date' => 'required',
         ]);
 
-        $tests = implode(',', $request->input('test'));
+        $selectedTests = implode(',', $request->input('test'));
         
         DB::table('patient_details')->insert([
             'patient_name' => $request->input('fullname'),
@@ -39,7 +53,7 @@ class PatientController extends Controller
             'patient_aadhar_card_no' => $request->input('aadharno'),
             'age' => $request->input('age'),
             'gender' => $request->input('gender'),
-            'selected_tests' => $tests,
+            'selected_tests' => $selectedTests,
             'lab_id' => $request->input('lab'),
             'refering_doctor_name' => $request->input('doctor'),
             'date' => $request->input('date'),
