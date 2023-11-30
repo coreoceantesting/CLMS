@@ -30,7 +30,7 @@
                             <td>{{$list->patient_name}}</td>
                             <td>{{$list->patient_mobile_no}}</td>
                             <td>{{$list->refering_doctor_name}}</td>
-                            <td><a class="btn btn-sm btn-primary text-white">View Report</a></td>
+                            <td><a href="{{ route('generate.pdf', ['userId' => $list->id]) }}" target="_blank" class="btn btn-sm btn-primary text-white">View Report</a></td>
                         </tr>
                         @endforeach
                     </tbody>

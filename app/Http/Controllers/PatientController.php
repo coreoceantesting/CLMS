@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use PDF;
 use Illuminate\Http\RedirectResponse;
 
 class PatientController extends Controller
@@ -103,4 +104,26 @@ class PatientController extends Controller
         $patient_list = DB::table('patient_details')->where('status','completed')->orderby('id','desc')->get();
         return view('Admin.completed_list', compact('patient_list'));
     }
+    
+    // generate pdf
+
+    public function generatePDF($userId)
+    {
+        $patient_details['patient_info'] = DB::table('patient_details')->where('id',$userId)->first();
+        $patient_details['test_report'] = DB::table('test_result')
+        ->join('test_category', 'test_result.test_id', '=', 'test_category.test_category_id')
+        ->select('test_result.*', 'test_category.test_category_name', 'test_category.test_category_units', 'test_category.bio_referal_interval')
+        ->where('test_result.patient_id', $userId)
+        ->get();
+        // dd($patient_details);
+
+        if (!$patient_details['patient_info']) {
+            abort(404);
+        }
+
+        $pdf = PDF::loadView('Admin.report', ['patient_details' => $patient_details]);
+
+        return $pdf->stream( $patient_details['patient_info']->patient_name.'('.date('Y-m-d').')'.'.pdf');
+    }
+
 }

@@ -61,3 +61,5 @@ Route::get('/edit-report/{id}/edit', [PatientController::class, 'edit_report'])-
 Route::post('/store-results/{id}', [PatientController::class, 'storeResults'])->name('store_results');
 // completed samples
 Route::get('/patient-completed-list', [PatientController::class, 'patient_completed_list'])->name('patient_completed_list');
+// generate pdf
+Route::get('/generate-pdf/{userId}', [PatientController::class, 'generatePDF'])->name('generate.pdf');
