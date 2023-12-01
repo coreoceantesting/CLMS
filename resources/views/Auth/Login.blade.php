@@ -19,7 +19,7 @@
                 <a href="{{url('/')}}" class="app-brand-link gap-2">
                     <span class="app-brand-logo demo">
                     </span>
-                    <span class="app-brand-text demo text-body fw-bolder"><img src="https://thanecity.gov.in/tmc/cache/1/Smart%20City/ESERVICES/TMC.jpg" width="150px" alt="Left Logo"></span>
+                    <span class="app-brand-text demo text-body fw-bolder"><img src="{{ asset('/assets/img/avatars/TMC.jpg') }}" width="150px" alt="Left Logo"></span>
                 </a>
                 </div>
                 <!-- /Logo -->

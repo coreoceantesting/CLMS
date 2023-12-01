@@ -7,7 +7,7 @@
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2"><img style="
                 margin-left: 36%;
-            " src="https://thanecity.gov.in/tmc/cache/1/Smart%20City/ESERVICES/TMC.jpg" width="100px" ></span>
+            " src="{{ asset('/assets/img/avatars/TMC.jpg') }}" width="100px" ></span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
