@@ -82,26 +82,29 @@
             <h3>Report</h3>
         </div>
         <div class="card-body">
-            <table class="table customers" >
-                <thead>
-                    <tr>
-                        <th>TEST NAME</th>
-                        <th>RESULT</th>
-                        <th>UNITS</th>
-                        <th>BIO.REF INTERVAL</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($patient_details['test_report'] as $test)
+            @foreach ($organizedTests as $mainCategory => $subTests)
+                <h3 style="text-align: center; padding-top: 15px; text-decoration: underline;">{{ $mainCategory }}</h3>
+                <table class="table customers">
+                    <thead>
                         <tr>
-                            <td>{{ $test->test_category_name }}</td>
-                            <td>{{ $test->result }}</td>
-                            <td>{{ $test->test_category_units }}</td>
-                            <td>{{ $test->bio_referal_interval }}</td>
+                            <th>TEST NAME</th>
+                            <th>RESULT</th>
+                            <th>UNITS</th>
+                            <th>BIO.REF INTERVAL</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($subTests as $test)
+                            <tr>
+                                <td>{{ $test->test_category_name }}</td>
+                                <td>{{ $test->result }}</td>
+                                <td>{{ $test->test_category_units }}</td>
+                                <td>{{ $test->bio_referal_interval }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endforeach
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

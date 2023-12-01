@@ -80,14 +80,28 @@ class PatientController extends Controller
         return view('Admin.pending_samples', compact('patient_list'));
    }
 
-    public function edit_report(Request $request,$id)
-    {
-        $patient_detail = DB::table('patient_details')->where('id',$id)->first();
-        $selected_tests = explode(',',$patient_detail->selected_tests);
-        $tests = DB::table('test_category')->whereIn('test_category_id',$selected_tests)->get();
-        // dd($tests);
-        return view('Admin.update_report',compact('patient_detail','tests'));
-    }
+   public function edit_report(Request $request, $id)
+   {
+       $patient_detail = DB::table('patient_details')->where('id', $id)->first();
+       $selected_tests = explode(',', $patient_detail->selected_tests);
+   
+       // Fetch both main and subtests
+       $tests = DB::table('test_category')
+           ->join('main_test_categories','test_category.main_test_categories_id','=','main_test_categories.main_test_categories_id')
+           ->whereIn('test_category_id', $selected_tests)
+           ->get(['test_category.*','main_test_categories.main_test_categories_name']);
+        //    dd($tests);
+   
+       // Organize tests by main test category
+       $organizedTests = [];
+       foreach ($tests as $test) {
+           $mainCategory = $test->main_test_categories_name;
+           $organizedTests[$mainCategory][] = $test;
+       }
+   
+       return view('Admin.update_report', compact('patient_detail', 'organizedTests'));
+   }
+   
 
     public function storeResults(Request $request,$id)
     {
@@ -95,20 +109,22 @@ class PatientController extends Controller
         // dd($request->results);
         // Validation
         $request->validate([
-            'results.*.test_id' => 'required|exists:test_category,test_category_id',
-            'results.*.result' => 'required',
+            'results.*.*.test_id' => 'required|exists:test_category,test_category_id',
+            'results.*.*.result' => 'required',
         ]);
 
         // Store in the database
-        foreach ($request->results as $result) {
-            DB::table('test_result')->insert([
-                'patient_id' => $id,
-                'test_id' => $result['test_id'],
-                'result' => $result['result'],
-                'generated_date' => date('Y-m-d'),
-                'created_by' =>  Auth::user()->id,
-                'created_at' => date('Y-m-d H:i:s'),
-            ]);
+        foreach ($request->results as $mainIndex => $mainResults) {
+            foreach ($mainResults as $result) {
+                DB::table('test_result')->insert([
+                    'patient_id' => $id,
+                    'test_id' => $result['test_id'],
+                    'result' => $result['result'],
+                    'generated_date' => date('Y-m-d'),
+                    'created_by' => Auth::user()->id,
+                    'created_at' => now(),
+                ]);
+            }
         }
 
         DB::table('patient_details')->where('id',$id)->update([
@@ -135,21 +151,30 @@ class PatientController extends Controller
 
     public function generatePDF($userId)
     {
-        $patient_details['patient_info'] = DB::table('patient_details')->where('id',$userId)->first();
+        $patient_details['patient_info'] = DB::table('patient_details')->where('id', $userId)->first();
         $patient_details['test_report'] = DB::table('test_result')
-        ->join('test_category', 'test_result.test_id', '=', 'test_category.test_category_id')
-        ->select('test_result.*', 'test_category.test_category_name', 'test_category.test_category_units', 'test_category.bio_referal_interval')
-        ->where('test_result.patient_id', $userId)
-        ->get();
+            ->join('test_category', 'test_result.test_id', '=', 'test_category.test_category_id')
+            ->join('main_test_categories', 'test_category.main_test_categories_id', '=', 'main_test_categories.main_test_categories_id')
+            ->select('test_result.*', 'test_category.test_category_name', 'test_category.test_category_units', 'test_category.bio_referal_interval','main_test_categories.main_test_categories_name')
+            ->where('test_result.patient_id', $userId)
+            ->get();
         // dd($patient_details);
+
+        // Organize tests by main test category
+        $organizedTests = [];
+        foreach ($patient_details['test_report'] as $test) {
+            $mainCategory = $test->main_test_categories_name;
+            $organizedTests[$mainCategory][] = $test;
+        }
 
         if (!$patient_details['patient_info']) {
             abort(404);
         }
 
-        $pdf = PDF::loadView('Admin.report', ['patient_details' => $patient_details]);
+        $pdf = PDF::loadView('Admin.report', ['patient_details' => $patient_details, 'organizedTests' => $organizedTests]);
 
-        return $pdf->stream( $patient_details['patient_info']->patient_name.'('.date('Y-m-d').')'.'.pdf');
+        return $pdf->stream($patient_details['patient_info']->patient_name . '(' . date('Y-m-d') . ')' . '.pdf');
     }
+
 
 }
