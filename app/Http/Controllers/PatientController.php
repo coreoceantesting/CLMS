@@ -70,7 +70,13 @@ class PatientController extends Controller
   // pending samples
    public function patient_pending_list(Request $request)
    {
-        $patient_list = DB::table('patient_details')->where('status','pending')->orderby('id','desc')->get();
+        // dd(Auth::user());
+        if(Auth::user()->role == 'Lab')
+        {
+            $patient_list = DB::table('patient_details')->where('status','pending')->where('lab_id',Auth::user()->lab_id)->orderby('id','desc')->get();
+        }else{
+            $patient_list = DB::table('patient_details')->where('status','pending')->orderby('id','desc')->get();
+        }
         return view('Admin.pending_samples', compact('patient_list'));
    }
 
@@ -116,7 +122,12 @@ class PatientController extends Controller
 
     public function patient_completed_list()
     {
-        $patient_list = DB::table('patient_details')->where('status','completed')->orderby('id','desc')->get();
+        if(Auth::user()->role == 'Lab')
+        {
+            $patient_list = DB::table('patient_details')->where('status','completed')->where('lab_id',Auth::user()->lab_id)->orderby('id','desc')->get();
+        }else{
+            $patient_list = DB::table('patient_details')->where('status','completed')->orderby('id','desc')->get();
+        }
         return view('Admin.completed_list', compact('patient_list'));
     }
     
