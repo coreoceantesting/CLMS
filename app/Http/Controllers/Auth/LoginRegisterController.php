@@ -9,6 +9,7 @@ use Session;
 use App\Models\User;
 use Hash;
 use Illuminate\Http\RedirectResponse;
+use DB;
 
 class LoginRegisterController extends Controller
 {
@@ -40,7 +41,8 @@ class LoginRegisterController extends Controller
 
     public function create_user()
     {
-        return view('Masters.Users_registration.create_user');
+        $lab_list = DB::table('lab_master')->where('is_deleted','0')->orderBy('lab_id','desc')->get();
+        return view('Masters.Users_registration.create_user',compact('lab_list'));
     }
       
     /**
@@ -96,7 +98,8 @@ class LoginRegisterController extends Controller
     public function edit_user(Request $request,$id)
     {
         $user_detail = User::find($id);
-        return view('Masters.Users_registration.edit_user',compact('user_detail'));
+        $lab_list = DB::table('lab_master')->where('is_deleted','0')->orderBy('lab_id','desc')->get();
+        return view('Masters.Users_registration.edit_user',compact('user_detail','lab_list'));
     }
 
     public function update_user(Request $request,$id)
@@ -104,14 +107,26 @@ class LoginRegisterController extends Controller
         $user = User::findOrFail($id);
         $request->validate([
             'username' => 'required',
-            'email' => 'required|email|unique:users',
-            // 'password' => 'required|min:6',
+            // 'email' => 'required|email|unique:users',
             'fname' => 'required',
             'mname' => 'required',
             'lname' => 'required',
             'address' => 'required',
             'user_type' => 'required',
         ]);
+
+        if($request->input('user_type') == 'Superadmin')
+        {
+            $role = 'Superadmin';
+            $lab_id = null;
+        }else if($request->input('user_type') == 'Health Center')
+        {
+            $role = 'HealthCenter';
+            $lab_id = null;
+        }else{
+            $role = 'Lab';
+            $lab_id = $request->input('lab_id');
+        }
 
         $user->update([
             'name' =>$request->input('fname') .' '.$request->input('lname'),
@@ -120,6 +135,8 @@ class LoginRegisterController extends Controller
             'last_name' => $request->input('lname'),
             'address' => $request->input('address'),
             'email' => $request->input('email'),
+            'role' => $role,
+            'lab_id' => $lab_id,
             'usertype' => $request->input('user_type'),
             'username' => $request->input('username')
         ]);
@@ -164,6 +181,17 @@ class LoginRegisterController extends Controller
      */
     public function create(array $data)
     {
+
+        if($data['user_type'] == 'Superadmin')
+        {
+            $role = 'Superadmin';
+        }else if($data['user_type'] == 'Health Center')
+        {
+            $role = 'HealthCenter';
+        }else{
+            $role = 'Lab';
+        }
+
       return User::create([
         'name' =>$data['fname'] .' '.$data['lname'],
         'first_name' => $data['fname'],
@@ -172,6 +200,8 @@ class LoginRegisterController extends Controller
         'address' => $data['address'],
         'email' => $data['email'],
         'usertype' => $data['user_type'],
+        'role' => $role,
+        'lab_id' => $data['lab_id'],
         'username' => $data['username'],
         'password' => Hash::make($data['password'])
       ]);

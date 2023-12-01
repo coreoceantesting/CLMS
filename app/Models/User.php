@@ -28,6 +28,8 @@ class User extends Authenticatable
         'username',
         'role',
         'usertype',
+        'lab_id',
+        'health_center_id',
         'is_deleted'
     ];
 

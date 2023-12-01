@@ -83,6 +83,15 @@
                             <option @if($user_detail->usertype == 'Lab') selected @endif value="Lab">Lab</option>
                         </select>
                     </div>
+                    <div class="col-md-6 col-sm-12" id="labDropdownWrapper" @if($user_detail->usertype == 'Lab') style="display: block;" @else style="display: none;" @endif>
+                        <label for="lab_id" class="form-label">Lab List</label>
+                        <select class="form-select" id="lab_id" name="lab_id" aria-label="Default select example">
+                            <option value="" selected>Select Lab</option>
+                            @foreach($lab_list as $list)
+                                <option @if($user_detail->lab_id == $list->lab_id) selected @endif value="{{ $list->lab_id }}">{{ $list->lab_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="col-md-6 col-sm-12">
                         <label for="username" class="form-label">Username</label>
                         <input
@@ -122,7 +131,20 @@
 </div>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var userTypeDropdown = document.getElementById('user_type');
+        var labDropdownWrapper = document.getElementById('labDropdownWrapper');
 
+        userTypeDropdown.addEventListener('change', function () {
+            if (this.value === 'Lab') {
+                labDropdownWrapper.style.display = 'block';
+            } else {
+                labDropdownWrapper.style.display = 'none';
+            }
+        });
+    });
+</script>
 @endsection
 
 @push('js')
