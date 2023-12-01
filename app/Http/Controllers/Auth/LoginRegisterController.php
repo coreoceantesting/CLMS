@@ -168,7 +168,17 @@ class LoginRegisterController extends Controller
     public function dashboard(): mixed
     {
         if(Auth::check()){
-            return view('Admin.dashboard'); // Assuming you have a dashboard view
+            if(Auth::user()->role == 'Lab'){
+                $total_patient = DB::table('patient_details')->where('lab_id',Auth::user()->lab_id)->count();
+                $total_pending_patient = DB::table('patient_details')->where('lab_id',Auth::user()->lab_id)->where('status','pending')->count();
+                $total_completed_patient = DB::table('patient_details')->where('lab_id',Auth::user()->lab_id)->where('status','completed')->count();
+            }else{
+                $total_patient = DB::table('patient_details')->count();
+                $total_pending_patient = DB::table('patient_details')->where('status','pending')->count();
+                $total_completed_patient = DB::table('patient_details')->where('status','completed')->count();      
+            }
+        
+            return view('Admin.dashboard',compact('total_patient','total_pending_patient','total_completed_patient')); // Assuming you have a dashboard view
         }
   
         return redirect("/")->withSuccess('Opps! You do not have access');
