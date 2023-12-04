@@ -5,7 +5,7 @@
     <div class="container py-4">
         <div class="card">
             <div class="card-header">
-               <h1 class="text-center"><strong>Patient Details</strong></h1> 
+               <h1 class="text-center"><strong>Patient Details</strong><a class="btn btn-sm btn-primary" style="float: right" href="{{route('patient_pending_list')}}">Back</a></h1> 
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
