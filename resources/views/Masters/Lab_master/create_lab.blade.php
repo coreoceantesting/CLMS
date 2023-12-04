@@ -15,25 +15,31 @@
                         <label for="labname" class="form-label">Lab Name</label>
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('labname') is-invalid @enderror"
                             id="labname"
                             placeholder="Enter Lab Name"
                             name="labname"
                             aria-describedby="labname"
                             required
                         />
+                        @error('labname')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <label for="initial" class="form-label">Initial</label>
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('labname') is-invalid @enderror"
                             id="initial"
                             name="initial"
                             placeholder="Enter Initial"
                             aria-describedby="initial"
                             required
                         />
+                        @error('initial')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6 col-sm-12 py-4">
                       <button type="submit" class="btn btn-primary">Submit</button>

@@ -15,37 +15,46 @@
                         <label for="tname" class="form-label">Test Name</label>
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('tname') is-invalid @enderror"
                             id="tname"
                             placeholder="Enter Test Name"
                             name="tname"
                             aria-describedby="tname"
                             required
                         />
+                        @error('tname')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <label for="units" class="form-label">Units</label>
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('units') is-invalid @enderror"
                             id="units"
                             name="units"
                             placeholder="Enter Units"
                             aria-describedby="units"
                             required
                         />
+                        @error('units')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <label for="bioreferal" class="form-label">BIO.REF Interval</label>
                             <input
                               type="text"
-                              class="form-control"
+                              class="form-control @error('bioreferal') is-invalid @enderror"
                               id="bioreferal"
                               name="bioreferal"
                               placeholder="Enter BIO.REF Interval"
                               aria-describedby="bioreferal"
                               required
                             />
+                            @error('bioreferal')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <label for="maincategory" class="form-label">Main Category</label>
