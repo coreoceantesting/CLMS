@@ -66,34 +66,29 @@
     
     <div class="card">
         <div class="card-body">
-            <table class="table customers">
-                <thead>
-                    <tr>
-                        <th>Name:</th>
-                        <td>{{ $patient_details['patient_info']->patient_name }}</td>
-                    </tr>
-                    <tr>
-                        <th>Mobile Number:</th>
-                        <td>{{$patient_details['patient_info']->patient_mobile_no}}</td>
-                    </tr>
-                    <tr>
-                        <th>Adharcard No:</th>
-                        <td>{{$patient_details['patient_info']->patient_aadhar_card_no}}</td>
-                    </tr>
-                    <tr>
-                        <th>Age:</th>
-                        <td>{{$patient_details['patient_info']->age}}</td>
-                    </tr>
-                    <tr>
-                        <th>Gender:</th>
-                        <td>{{$patient_details['patient_info']->gender}}</td>
-                    </tr>
-                    <tr>
-                        <th>Refering Doctor Name</th>
-                        <td>{{$patient_details['patient_info']->refering_doctor_name}}</td>
-                    </tr>
-                </thead>
-            </table>
+        <table class="table customers">
+            <tbody>
+                <tr>
+                    <th>Name:</th>
+                    <td>{{ $patient_details['patient_info']->patient_name }}</td>
+                    <th>Mobile Number:</th>
+                    <td>{{ $patient_details['patient_info']->patient_mobile_no }}</td>
+                </tr>
+                <tr>
+                    <th>Adharcard No:</th>
+                    <td>{{ $patient_details['patient_info']->patient_aadhar_card_no }}</td>
+                    <th>Age:</th>
+                    <td>{{ $patient_details['patient_info']->age }}</td>
+                </tr>
+                <tr>
+                    <th>Gender:</th>
+                    <td>{{ $patient_details['patient_info']->gender }}</td>
+                    <th>Referring Doctor Name:</th>
+                    <td>{{ $patient_details['patient_info']->refering_doctor_name }}</td>
+                </tr>
+            </tbody>
+        </table>
+
         </div>
         <div class="card-header text-center">
             <h3>Report</h3>
