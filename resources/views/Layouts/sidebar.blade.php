@@ -27,6 +27,7 @@
         </li>
 
         <!-- Layouts -->
+        @if( auth()->user()->role == "Superadmin")
         <li class="menu-item {{ request()->routeIs(['user_list', 'test_category_list', 'lab_list']) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -71,6 +72,7 @@
                 </li> --}}
             </ul>
         </li>
+        @endif
 
         {{-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
