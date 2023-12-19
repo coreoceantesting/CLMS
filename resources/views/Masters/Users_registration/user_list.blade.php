@@ -18,7 +18,7 @@
                 <tr>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>User_type</th>
+                  <th>User Type</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -26,7 +26,7 @@
                 @if(!empty($users))
                   @foreach ($users as $item)
                   <tr>
-                      <td>{{$item->name}}</td>
+                      <td>{{$item->first_name}} {{$item->middle_name}} {{$item->last_name}}</td>
                       <td>{{$item->email}}</td>
                       <td>{{$item->usertype}}</td>
                       <td>

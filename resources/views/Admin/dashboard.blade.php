@@ -490,7 +490,7 @@
         <div class="row align-items-stretch">
           <div class="c-dashboardInfo col-lg-3 col-md-6">
             <div class="wrap">
-              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Patient Registration
+              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"><a class="text-dark" href="{{route('register_patient')}}">Patient Registration</a>
                   <path fill="none" d="M0 0h24v24H0z"></path>
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                   </path>
@@ -499,7 +499,7 @@
           </div>
           <div class="c-dashboardInfo col-lg-3 col-md-6">
             <div class="wrap">
-              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Pending List
+              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"><a href="{{route('patient_pending_list')}}" class="text-dark">Pending List</a>
                   <path fill="none" d="M0 0h24v24H0z"></path>
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                   </path>
@@ -508,7 +508,7 @@
           </div>
           <div class="c-dashboardInfo col-lg-3 col-md-6">
             <div class="wrap">
-              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Completed List
+              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title"><a href="{{route('patient_completed_list')}}" class="text-dark">Completed List</a>
                   <path fill="none" d="M0 0h24v24H0z"></path>
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                   </path>

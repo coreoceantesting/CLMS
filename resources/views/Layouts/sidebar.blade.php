@@ -5,9 +5,9 @@
         <a class="app-brand-link">
             <span class="app-brand-logo demo">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2"><img style="
+            <span class="app-brand-text demo menu-text fw-bolder ms-2"><a href="{{route('dashboard')}}"><img style="
                 margin-left: 36%;
-            " src="{{ asset('/assets/img/avatars/TMC.jpg') }}" width="100px" ></span>
+            " src="{{ asset('/assets/img/avatars/TMC.jpg') }}" width="100px" ></a></span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -35,6 +35,11 @@
             </a>
 
             <ul class="menu-sub" style="{{ request()->routeIs(['user_list', 'test_category_list', 'lab_list','main_test_category_list']) ? 'display: block;' : '' }}">
+                <li class="menu-item {{ request()->routeIs('lab_list') ? 'active' : '' }}">
+                    <a href="{{route('lab_list')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Lab</div>
+                    </a>
+                </li>  
                 <li class="menu-item {{ request()->routeIs('user_list') ? 'active' : '' }}">
                     <a href="{{route('user_list')}}" class="menu-link">
                         <div data-i18n="Without menu">User Registration</div>
@@ -50,11 +55,7 @@
                         <div data-i18n="Without navbar">Sub Test Category</div>
                     </a>
                 </li>                
-                <li class="menu-item {{ request()->routeIs('lab_list') ? 'active' : '' }}">
-                    <a href="{{route('lab_list')}}" class="menu-link">
-                        <div data-i18n="Without navbar">Lab</div>
-                    </a>
-                </li>
+                
                 {{-- <li class="menu-item">
                     <a href="layouts-container.html" class="menu-link">
                         <div data-i18n="Container">Container</div>
@@ -142,7 +143,7 @@
             </ul>
         </li> --}}
         <!-- Components -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Menus</span></li>
+        <li class="menu-header small text-uppercase"  style="display:none;"><span class="menu-header-text">Menus</span></li>
         <!-- Cards -->
         <li class="menu-item {{ request()->routeIs('register_patient') ? 'active' : '' }}">
             <a href="{{route('register_patient')}}" class="menu-link">

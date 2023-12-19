@@ -20,6 +20,8 @@
                         <tr>
                             <th>Patient Name</th>
                             <th>Patient Mobile No</th>
+                            <th>Patient Age</th>
+                            <th>Patient Gender</th>
                             <th>Refering Doctor Name</th>
                             <th>Action</th>
                         </tr>
@@ -29,6 +31,8 @@
                         <tr>
                             <td>{{$list->patient_name}}</td>
                             <td>{{$list->patient_mobile_no}}</td>
+                            <td>{{$list->age}}</td>
+                            <td>{{$list->gender}}</td>
                             <td>{{$list->refering_doctor_name}}</td>
                             <td><a href="{{route('edit_report',$list->id )}}" class="btn btn-sm btn-primary text-white">Create report</a></td>
                         </tr>

@@ -87,7 +87,7 @@
                     <div class="col-md-6 col-sm-12">
                         <label for="user_type" class="form-label">User Types</label>
                         <select class="form-select @error('user_type') is-invalid @enderror" id="user_type" name="user_type" aria-label="Default select example" required>
-                            <option selected>Select User Types</option>
+                            <option value="">Select User Types</option>
                             <option value="Superadmin">Superadmin</option>
                             <option value="Health Center">Health Center</option>
                             <option value="Lab">Lab</option>
