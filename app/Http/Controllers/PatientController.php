@@ -27,7 +27,13 @@ class PatientController extends Controller
             ->select('test_category.*', 'main_test_categories.main_test_categories_name')
             ->where('test_category.is_deleted','0')
             ->get();
-        $lab_list = DB::table('lab_master')->where('is_deleted','0')->orderBy('lab_id','desc')->get();
+        if(Auth()->user()->role == 'Lab')
+        {
+            $lab_list = DB::table('lab_master')->where('lab_id',Auth()->user()->lab_id)->where('is_deleted','0')->orderBy('lab_id','desc')->get();
+        }else{
+            
+            $lab_list = DB::table('lab_master')->where('is_deleted','0')->orderBy('lab_id','desc')->get();
+        }
         return view('Admin.patient_registration',compact('mainCategories','subCategories','lab_list'));
    }
 

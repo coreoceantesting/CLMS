@@ -124,7 +124,7 @@
                     <div class="col-md-6 col-sm-12">
                         <label for="lab" class="form-label">Lab</label>
                         <select class="form-select @error('lab') is-invalid @enderror" id="lab" name="lab" aria-label="Default select example" required>
-                            <option value="" selected>Select Lab</option>
+                            <option value="">Select Lab</option>
                             @foreach($lab_list as $list)
                                 <option value="{{ $list->lab_id }}">{{ $list->lab_name }}</option>
                             @endforeach
