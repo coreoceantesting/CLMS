@@ -26,25 +26,42 @@
             background-color: #9999ff;
             color: white;
         }
+
+        .logo {
+            max-width: 100px; /* Adjust as needed */
+        }
+
+        .title {
+            text-align: center;
+        }
+        .container {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-    <div class="card-header">
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <img src="https://thanecity.gov.in/tmc/cache/1/Smart%20City/ESERVICES/TMC.jpg" width="100px" alt="Left Logo">
-            </div>
-            <div class="col-md-4 text-center py-3">
+    <table class="container">
+        <tr>
+            <!-- Left Logo -->
+            <td style="text-align: left;">
+                <img class="logo" src="{{ public_path('/assets/img/avatars/TMC.jpg') }}" alt="Left Logo">
+            </td>
+
+            <!-- Center Title -->
+            <td class="title">
                 <h3>THANE MUNICIPAL CORPORATION</h3>
                 <small>DEPARTMENT OF PATHOLOGY</small><br>
                 <small>C R WADIA DISPENSARY</small><br>
                 <small>THANE</small>
-            </div>
-            {{-- <div class="col-md-4 text-center">
-                <img src="https://thanecity.gov.in/tmc/cache/1/Smart%20City/ESERVICES/TMC.jpg" width="50px" alt="Right Logo">
-            </div> --}}
-        </div>
-    </div>
+            </td>
+
+            <!-- Right Logo -->
+            <td style="text-align: right;">
+                <img class="logo" src="{{ public_path('/assets/img/avatars/TMC.jpg') }}" alt="Right Logo">
+            </td>
+        </tr>
+    </table>
+
     <br>
     
     <div class="card">
