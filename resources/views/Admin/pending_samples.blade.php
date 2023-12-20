@@ -34,7 +34,11 @@
                             <td>{{$list->age}}</td>
                             <td>{{$list->gender}}</td>
                             <td>{{$list->refering_doctor_name}}</td>
-                            <td><a href="{{route('edit_report',$list->id )}}" class="btn btn-sm btn-primary text-white">Create report</a></td>
+                            <td>
+                                <a href="{{route('view',$list->id )}}" class="btn btn-sm btn-info text-white">View</a>
+                                <a href="{{route('edit',$list->id )}}" class="btn btn-sm btn-warning text-white">Edit</a>
+                                <a href="{{route('edit_report',$list->id )}}" class="btn btn-sm btn-primary text-white">Create report</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

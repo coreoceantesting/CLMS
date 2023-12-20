@@ -11,7 +11,7 @@
             </div>
         @endif
         <div class="card-header">
-            <strong>Patient List</strong>
+            <strong>Completed List</strong>
         </div>
         <div class="card-body">
             <div class="table-responsive">
