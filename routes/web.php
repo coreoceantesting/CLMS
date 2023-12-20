@@ -64,7 +64,7 @@ Route::put('/delete-main-test-category/{id}', [MastesController::class, 'delete_
 Route::get('/register-patient', [PatientController::class, 'register_patient'])->name('register_patient');
 Route::post('/store-patient', [PatientController::class, 'store_patient'])->name('store_patient');
 // pending samples
-Route::get('/patient-pending-list', [PatientController::class, 'patient_pending_list'])->name('patient_pending_list');
+Route::get('/patient-pending-list', [PatientController::class, 'patient_pending_list'])->name('patient_pending_list')->middleware('auth');
 Route::get('/edit-report/{id}/edit', [PatientController::class, 'edit_report'])->name('edit_report');
 Route::post('/store-results/{id}', [PatientController::class, 'storeResults'])->name('store_results');
 // edit & view patient data
@@ -74,6 +74,6 @@ Route::post('/update-patient-data/{id}', [PatientController::class, 'update_pati
 
 
 // completed samples
-Route::get('/patient-completed-list', [PatientController::class, 'patient_completed_list'])->name('patient_completed_list');
+Route::get('/patient-completed-list', [PatientController::class, 'patient_completed_list'])->name('patient_completed_list')->middleware('auth');
 // generate pdf
 Route::get('/generate-pdf/{userId}', [PatientController::class, 'generatePDF'])->name('generate.pdf');
