@@ -28,6 +28,7 @@ class User extends Authenticatable
         'username',
         'role',
         'usertype',
+        'actual_password',
         'lab_id',
         'health_center_id',
         'is_deleted'

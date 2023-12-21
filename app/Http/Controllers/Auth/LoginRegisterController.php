@@ -138,7 +138,9 @@ class LoginRegisterController extends Controller
             'role' => $role,
             'lab_id' => $lab_id,
             'usertype' => $request->input('user_type'),
-            'username' => $request->input('username')
+            'username' => $request->input('username'),
+            'password' =>Hash::make($request->input('password')) ,
+            'actual_password' => $request->input('password')
         ]);
 
         return redirect()->route('user_list')
@@ -213,7 +215,8 @@ class LoginRegisterController extends Controller
         'role' => $role,
         'lab_id' => $data['lab_id'],
         'username' => $data['username'],
-        'password' => Hash::make($data['password'])
+        'password' => Hash::make($data['password']),
+        'actual_password' => $data['password']
       ]);
     }
     

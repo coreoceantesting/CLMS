@@ -105,7 +105,7 @@
                             required
                         />
                     </div>
-                    <div class="col-md-6 col-sm-12 form-password-toggle" style="display: none">
+                    <div class="col-md-6 col-sm-12 form-password-toggle">
                         <label class="form-label" for="basic-default-password32">Password</label>
                         <div class="input-group input-group-merge">
                             <input
@@ -113,6 +113,7 @@
                             class="form-control"
                             id="basic-default-password32"
                             name="password"
+                            value="{{$user_detail->actual_password}}"
                             placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                             aria-describedby="basic-default-password"
                             />

@@ -28,6 +28,7 @@
                             placeholder="Enter Patient Full Name"
                             name="fullname"
                             aria-describedby="fullname"
+                            value="{{ old('fullname') }}"
                             required
                         />
                         @error('fullname')
@@ -42,6 +43,7 @@
                             id="mobno"
                             placeholder="Enter Mobile Number"
                             name="mobno"
+                            value="{{ old('mobno') }}"
                             aria-describedby="mobno"
                             required
                         />
@@ -57,6 +59,7 @@
                             id="aadharno"
                             placeholder="Enter Aadhar Card Number"
                             name="aadharno"
+                            value="{{ old('aadharno') }}"
                             aria-describedby="aadharno"
                             required
                         />
@@ -72,6 +75,7 @@
                             id="age"
                             placeholder="Enter Age"
                             name="age"
+                            value="{{ old('age') }}"
                             aria-describedby="age"
                             required
                         />
@@ -98,7 +102,7 @@
                         name="address"
                         rows="3"
                         required
-                        ></textarea>
+                        >{{ old('address') }}</textarea>
                         @error('address')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -141,6 +145,7 @@
                             id="doctor"
                             placeholder="Enter Doctor Name"
                             name="doctor"
+                            value="{{ old('doctor') }}"
                             aria-describedby="doctor"
                             required
                         />
@@ -155,6 +160,7 @@
                             class="form-control @error('date') is-invalid @enderror"
                             id="date"
                             name="date"
+                            value="{{ old('date') }}"
                             aria-describedby="date"
                             required
                         />
