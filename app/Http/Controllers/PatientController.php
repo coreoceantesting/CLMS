@@ -7,6 +7,7 @@ use Auth;
 use DB;
 use PDF;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Validator;
 
 class PatientController extends Controller
 {
@@ -50,6 +51,9 @@ class PatientController extends Controller
             'lab' => 'required',
             'doctor' => 'required',
             'date' => 'required',
+        ],[
+            'aadharno.min' => 'The Aadhar No must be at least :min digits.',
+            'mobno.min' => 'The Mobile No must be at least :min digits.'
         ]);
 
         $selectedTests = implode(',', $request->input('test'));
