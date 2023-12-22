@@ -65,24 +65,24 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/edit-test-category/{id}/edit', [MastesController::class, 'edit_test_category'])->name('edit_test_category');
     Route::patch('/update-test-category/{id}', [MastesController::class, 'update_test_category'])->name('update_test_category');
     Route::put('/delete-test-category/{id}', [MastesController::class, 'delete_test_category'])->name('delete_test_category');
+    
+    // patient Registration
+    Route::get('/register-patient', [PatientController::class, 'register_patient'])->name('register_patient');
+    Route::post('/store-patient', [PatientController::class, 'store_patient'])->name('store_patient');
+    // pending samples
+    Route::get('/patient-pending-list', [PatientController::class, 'patient_pending_list'])->name('patient_pending_list');
+    Route::get('/edit-report/{id}/edit', [PatientController::class, 'edit_report'])->name('edit_report');
+    Route::post('/store-results/{id}', [PatientController::class, 'storeResults'])->name('store_results');
+    // edit & view patient data
+    Route::get('/edit/{id}', [PatientController::class, 'edit'])->name('edit');
+    Route::get('/view/{id}', [PatientController::class, 'view'])->name('view');
+    Route::post('/update-patient-data/{id}', [PatientController::class, 'update_patient_data'])->name('update_patient_data');
+    
+    
+    // completed samples
+    Route::get('/patient-completed-list', [PatientController::class, 'patient_completed_list'])->name('patient_completed_list');
 });
 
 
-
-// patient Registration
-Route::get('/register-patient', [PatientController::class, 'register_patient'])->name('register_patient');
-Route::post('/store-patient', [PatientController::class, 'store_patient'])->name('store_patient');
-// pending samples
-Route::get('/patient-pending-list', [PatientController::class, 'patient_pending_list'])->name('patient_pending_list')->middleware('auth');
-Route::get('/edit-report/{id}/edit', [PatientController::class, 'edit_report'])->name('edit_report');
-Route::post('/store-results/{id}', [PatientController::class, 'storeResults'])->name('store_results');
-// edit & view patient data
-Route::get('/edit/{id}', [PatientController::class, 'edit'])->name('edit');
-Route::get('/view/{id}', [PatientController::class, 'view'])->name('view');
-Route::post('/update-patient-data/{id}', [PatientController::class, 'update_patient_data'])->name('update_patient_data');
-
-
-// completed samples
-Route::get('/patient-completed-list', [PatientController::class, 'patient_completed_list'])->name('patient_completed_list')->middleware('auth');
 // generate pdf
 Route::get('/generate-pdf/{userId}', [PatientController::class, 'generatePDF'])->name('generate.pdf');
